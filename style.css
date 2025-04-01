@@ -1,0 +1,140 @@
+html {
+    scrollbar-color: auto;
+    scrollbar-color: red white;
+    /* cursor: var(--cursor-icon), auto; */
+}
+
+/* text selection color */
+::-moz-selection {
+    /* Code for Firefox */
+    color: red;
+    background: white;
+}
+
+::selection {
+    color: red;
+    background: white;
+}
+
+.outermain-container {
+    /* background-color: black; */
+
+
+    background: linear-gradient(300deg, #ff0000, #000000, #ff0000);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+
+    width: 100%;
+    height: 100vh;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.inner-container {
+    /* background-color: green; */
+    width: 100%;
+    height: 100vh;
+}
+
+.card-container {
+    /* background-color: red; */
+    height: 100vh;
+}
+
+.card-div {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(./assets/images/imgone.gif);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+
+}
+
+.card-head-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+
+.subtext {
+    margin: 0;
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+}
+
+.pro-img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.item {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin-bottom: 10px;
+    /* border-radius: 20px; */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-icons {
+    width: 40px;
+    height: 40px;
+    /* background-color: white; */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.icon-container {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-icons {
+    color: red;
+    font-size: 20px;
+}
+
+.link-text {
+    margin-left: 20px;
+}
+
+.item:hover {
+    background-color: red;
+    color: white;
+}
