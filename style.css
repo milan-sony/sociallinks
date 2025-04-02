@@ -33,6 +33,7 @@ html {
     scrollbar-color: auto;
     scrollbar-color: red transparent;
     /* cursor: var(--cursor-icon), auto; */
+    scroll-behavior: smooth;
 }
 
 /* text selection color */
