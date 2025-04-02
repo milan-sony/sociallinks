@@ -11,6 +11,24 @@
     /* --cursor-icon: url("../assets/mouse-hand-cursor-color-icon.svg"); */
 }
 
+/* preloader */
+#content {
+    display: none;
+}
+
+#loader {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader img {
+    height: 250px;
+    width: auto;
+}
+
 html {
     scrollbar-color: auto;
     scrollbar-color: red transparent;
@@ -129,4 +147,6 @@ html {
 .item:hover {
     background-color: red;
     color: white;
+    transform: translate(5px, 0px);
+    transition: 0.2s ease-in-out;
 }
