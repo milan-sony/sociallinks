@@ -90,12 +90,31 @@ html {
     font-family: var(--primary-font);
 }
 
-.subtext {
+.subtext2 {
     margin: 0;
     font-size: 14px;
     font-weight: 600;
     color: white;
     font-family: var(--tertiary-font);
+    text-align: center;
+}
+
+.india {
+    color: #FF661F;
+    background-image: linear-gradient(90deg, #FF661F 50%, #FFFFFF 0%, #046B39 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtext {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    font-family: var(--secondary-font);
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 .pro-img {
