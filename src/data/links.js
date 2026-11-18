@@ -9,7 +9,7 @@ export const profile = {
   name: 'Milan Sony',
   handle: '@milansony',
   avatar: `${import.meta.env.BASE_URL}profile.jpg`,
-  role: 'Coder',
+  role: 'Developer',
   location: 'India',
   bio: "I'm a simple human being, a self-taught, passionate, and dedicated developer from India who is trying to become good at everything I do while maintaining a healthy work-life balance.",
   status: 'Stay connected with me',
