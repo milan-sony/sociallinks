@@ -29,7 +29,7 @@ function BrandIcon({ icon, className }) {
 export function FeaturedTiles({ links }) {
   if (!links.length) return null
   return (
-    <motion.div variants={item} className="grid grid-cols-2 gap-3">
+    <motion.div variants={item} className="grid grid-cols-2 gap-2.5 sm:gap-3">
       {links.map((l) => (
         <motion.a
           key={l.id}
@@ -39,7 +39,7 @@ export function FeaturedTiles({ links }) {
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.97 }}
           transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-          className="group relative flex flex-col gap-6 rounded-xl border bg-card p-4 shadow-xs outline-none transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
+          className="group relative flex flex-col gap-5 rounded-xl border bg-card p-3.5 sm:gap-6 sm:p-4 shadow-xs outline-none transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
         >
           <div className="flex items-start justify-between">
             <BrandIcon icon={l.icon} className="size-10 text-lg" />
@@ -91,7 +91,11 @@ export function LinkList({ links }) {
 
 export function CategoryTabs({ categories, value, onChange, counts, className }) {
   return (
-    <div role="tablist" aria-label="Filter links" className={cn('flex gap-1 rounded-lg bg-muted p-1', className)}>
+    <div
+      role="tablist"
+      aria-label="Filter links"
+      className={cn('flex gap-1 overflow-x-auto rounded-lg bg-muted p-1 [scrollbar-width:none]', className)}
+    >
       {categories.map((c) => {
         const active = c.id === value
         return (
@@ -101,7 +105,7 @@ export function CategoryTabs({ categories, value, onChange, counts, className })
             aria-selected={active}
             onClick={() => onChange(c.id)}
             className={cn(
-              'relative flex-1 rounded-md px-2 py-1.5 text-[13px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring',
+              'relative flex-1 shrink-0 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[13px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring',
               active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
             )}
           >

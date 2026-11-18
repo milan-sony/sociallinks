@@ -99,12 +99,6 @@
   mix-blend-mode: normal;
 }
 
-/* Soft dotted grid behind the desktop window */
-.canvas-dots {
-  background-image: radial-gradient(color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px);
-  background-size: 22px 22px;
-}
-
 /* Notion-style page cover: monochrome mesh + fine grain */
 .cover {
   background:
