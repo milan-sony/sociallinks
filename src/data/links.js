@@ -11,12 +11,22 @@ export const profile = {
   avatar: `${import.meta.env.BASE_URL}profile.jpg`,
   role: 'Coder',
   location: 'India',
-  bio: "Hi, I'm Milan Sony, a passionate and dedicated coder from India.",
+  bio: "I'm a simple human being, a self-taught, passionate, and dedicated developer from India who is trying to become good at everything I do while maintaining a healthy work-life balance.",
   status: 'Stay connected with me',
 }
 
+// Contact details used by the Quick contact tiles below.
+export const contact = {
+  email: 'milansonyofficial@gmail.com',
+  phone: '+91 8075143465',
+}
+
+// Digits only (with country code) for tel: and wa.me links.
+const phoneDigits = contact.phone.replace(/\D/g, '')
+
 export const categories = [
   { id: 'all', label: 'All' },
+  { id: 'contact', label: 'Contact' },
   { id: 'social', label: 'Social' },
   { id: 'dev', label: 'Developer' },
   { id: 'support', label: 'Support' },
@@ -27,9 +37,27 @@ export const links = [
     id: 'whatsapp',
     label: 'WhatsApp',
     handle: 'Send a message',
-    url: 'https://wa.me/918075143465',
+    url: `https://wa.me/${phoneDigits}`,
     icon: 'whatsapp',
-    category: 'social',
+    category: 'contact',
+    featured: true,
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    handle: contact.email,
+    url: `mailto:${contact.email}`,
+    icon: 'email',
+    category: 'contact',
+    featured: true,
+  },
+  {
+    id: 'call',
+    label: 'Call',
+    handle: contact.phone,
+    url: `tel:+${phoneDigits}`,
+    icon: 'phone',
+    category: 'contact',
     featured: true,
   },
   {
@@ -39,7 +67,6 @@ export const links = [
     url: 'https://github.com/milan-sony',
     icon: 'github',
     category: 'dev',
-    featured: true,
   },
   {
     id: 'linkedin',

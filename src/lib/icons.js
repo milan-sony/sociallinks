@@ -8,6 +8,8 @@ import {
   FaGoogle,
   FaFacebookF,
   FaSnapchat,
+  FaEnvelope,
+  FaPhone,
 } from 'react-icons/fa6'
 import { SiBuymeacoffee } from 'react-icons/si'
 import { Link2 } from 'lucide-react'
@@ -24,6 +26,8 @@ export const icons = {
   facebook: { Icon: FaFacebookF, color: '#1877F2' },
   snapchat: { Icon: FaSnapchat, color: '#F7C600' },
   coffee: { Icon: SiBuymeacoffee, color: '#FF813F' },
+  email: { Icon: FaEnvelope, color: '#EA4335' },
+  phone: { Icon: FaPhone, color: '#22C55E' },
 }
 
 export const getIcon = (key) => icons[key] ?? { Icon: Link2, color: 'currentColor' }

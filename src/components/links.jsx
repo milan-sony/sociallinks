@@ -5,6 +5,10 @@ import { cn } from '@/lib/utils'
 
 const ease = [0.2, 0.8, 0.2, 1]
 
+// Web links open in a new tab; mailto:/tel: hand off to the device's app.
+const linkProps = (url) =>
+  /^https?:/.test(url) ? { href: url, target: '_blank', rel: 'noopener noreferrer' } : { href: url }
+
 export const item = {
   hidden: { opacity: 0, y: 10, filter: 'blur(4px)' },
   show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease } },
@@ -29,25 +33,24 @@ function BrandIcon({ icon, className }) {
 export function FeaturedTiles({ links }) {
   if (!links.length) return null
   return (
-    <motion.div variants={item} className="grid grid-cols-2 gap-2.5 sm:gap-3">
+    <motion.div variants={item} className="grid grid-cols-3 gap-2 sm:gap-3">
       {links.map((l) => (
         <motion.a
           key={l.id}
-          href={l.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...linkProps(l.url)}
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.97 }}
           transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-          className="group relative flex flex-col gap-5 rounded-xl border bg-card p-3.5 sm:gap-6 sm:p-4 shadow-xs outline-none transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
+          title={l.handle}
+          className="group relative flex flex-col gap-4 rounded-xl border bg-card p-3 sm:gap-6 sm:p-4 shadow-xs outline-none transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
         >
           <div className="flex items-start justify-between">
-            <BrandIcon icon={l.icon} className="size-10 text-lg" />
+            <BrandIcon icon={l.icon} className="size-9 text-base sm:size-10 sm:text-lg" />
             <ArrowUpRight className="size-4 text-muted-foreground transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
           </div>
           <div className="min-w-0">
             <p className="truncate text-[15px] font-medium">{l.label}</p>
-            <p className="truncate font-mono text-xs text-muted-foreground">{l.handle}</p>
+            <p className="hidden truncate font-mono text-xs text-muted-foreground sm:block">{l.handle}</p>
           </div>
         </motion.a>
       ))}
@@ -69,9 +72,7 @@ export function LinkList({ links }) {
             transition={{ duration: 0.25, ease }}
           >
             <motion.a
-              href={l.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...linkProps(l.url)}
               whileTap={{ scale: 0.985 }}
               className="group flex items-center gap-3.5 rounded-xl px-2.5 py-2.5 outline-none transition-colors duration-150 hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring"
             >

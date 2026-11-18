@@ -99,16 +99,54 @@
   mix-blend-mode: normal;
 }
 
-/* Notion-style page cover: monochrome mesh + fine grain */
+/* Notion-style page cover: animated monochrome gradient + fine grain */
 .cover {
-  background:
-    radial-gradient(120% 140% at 0% 0%, color-mix(in oklch, var(--foreground) 16%, transparent), transparent 55%),
-    radial-gradient(90% 120% at 100% 100%, color-mix(in oklch, var(--foreground) 22%, transparent), transparent 60%),
-    linear-gradient(135deg, var(--muted), var(--background));
+  isolation: isolate;
+  background: linear-gradient(135deg, var(--muted), var(--background));
+}
+.cover-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  will-change: transform;
+  animation: cover-drift var(--dur) ease-in-out infinite alternate;
+}
+.cover-blob-1 {
+  --dur: 16s;
+  width: 60%;
+  aspect-ratio: 1;
+  left: -12%;
+  top: -80%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--foreground) 32%, transparent), transparent);
+}
+.cover-blob-2 {
+  --dur: 21s;
+  width: 55%;
+  aspect-ratio: 1;
+  right: -10%;
+  top: -40%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--foreground) 22%, transparent), transparent);
+  animation-direction: alternate-reverse;
+}
+.cover-blob-3 {
+  --dur: 25s;
+  width: 45%;
+  aspect-ratio: 1;
+  left: 30%;
+  top: 10%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--foreground) 18%, transparent), transparent);
+  animation-delay: -8s;
+}
+@keyframes cover-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(18%, 12%, 0) scale(1.15); }
+  66% { transform: translate3d(-8%, 22%, 0) scale(0.92); }
+  100% { transform: translate3d(12%, -6%, 0) scale(1.08); }
 }
 .cover::after {
   content: '';
   position: absolute;
+  z-index: 1;
   inset: 0;
   opacity: 0.18;
   mix-blend-mode: overlay;
@@ -121,10 +159,15 @@
   ::view-transition-new(*) {
     animation: none !important;
   }
+  .cover-blob {
+    animation: none;
+  }
 }
 
-/* Quiet, thin scrollbars inside the app window */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklch, var(--foreground) 18%, transparent) transparent;
+/* Quiet, thin scrollbars. In a layer so utilities like [scrollbar-width:none] can override it. */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--foreground) 18%, transparent) transparent;
+  }
 }

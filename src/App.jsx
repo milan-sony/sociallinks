@@ -8,6 +8,7 @@ import {
   Users,
   Terminal,
   Heart,
+  Phone,
 } from "lucide-react";
 import { profile, categories, links } from "@/data/links";
 import { useTheme } from "@/hooks/use-theme";
@@ -25,6 +26,7 @@ import { cn } from "@/lib/utils";
 const YEAR = new Date().getFullYear()
 const categoryIcons = {
   all: Link2,
+  contact: Phone,
   social: Users,
   dev: Terminal,
   support: Heart,
@@ -80,7 +82,7 @@ function Page({ filter, setFilter, counts, visible, featured }) {
       variants={stagger}
       initial="hidden"
       animate="show"
-      className="pb-10"
+      className="flex min-h-[calc(100dvh-3rem)] flex-col pb-8"
     >
       {/* Notion-style cover */}
       <motion.div
@@ -89,9 +91,15 @@ function Page({ filter, setFilter, counts, visible, featured }) {
           show: { opacity: 1, transition: { duration: 0.8 } },
         }}
         className="cover relative h-32 overflow-hidden sm:h-44 xl:h-52 [@media(max-height:500px)]:h-24"
-      />
+        aria-hidden
+      >
+        {/* Slow-drifting gradient blobs (see .cover-blob in index.css) */}
+        <span className="cover-blob cover-blob-1" />
+        <span className="cover-blob cover-blob-2" />
+        <span className="cover-blob cover-blob-3" />
+      </motion.div>
 
-      <div className="mx-auto max-w-xl px-5 sm:px-8 xl:grid xl:max-w-6xl xl:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] xl:gap-16 xl:px-12 2xl:gap-24">
+      <div className="mx-auto w-full max-w-xl px-5 sm:px-8 xl:grid xl:max-w-6xl xl:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] xl:gap-16 xl:px-12 2xl:gap-24">
         {/* Left column (sticky on wide screens): who I am */}
         <div className="xl:sticky xl:top-12 xl:self-start xl:pb-10">
           {/* Page icon = avatar, overlapping the cover */}
@@ -176,7 +184,7 @@ function Page({ filter, setFilter, counts, visible, featured }) {
               Links
             </h2>
             <span className="font-mono text-[11px] text-muted-foreground">
-              {visible.length} items
+              {visible.length} {visible.length === 1 ? "item" : "items"}
             </span>
           </motion.div>
 
@@ -190,15 +198,18 @@ function Page({ filter, setFilter, counts, visible, featured }) {
             />
             <LinkList links={visible} />
           </motion.div>
-
-          <motion.footer
-            variants={item}
-            className="mt-12 border-t pt-5 text-center font-mono text-[11px] text-muted-foreground xl:text-left"
-          >
-            © {YEAR} {profile.name}
-          </motion.footer>
         </div>
       </div>
+
+      {/* Footer: full width, pinned to the bottom when content is short */}
+      <motion.footer
+        variants={item}
+        className="mx-auto mt-auto w-full max-w-xl px-5 pt-12 sm:px-8 xl:max-w-6xl xl:px-12"
+      >
+        <p className="border-t pt-5 text-center font-mono text-[11px] text-muted-foreground">
+          © {YEAR} {profile.name}
+        </p>
+      </motion.footer>
     </motion.article>
   );
 }
