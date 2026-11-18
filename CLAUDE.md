@@ -8,10 +8,10 @@ A personal "link in bio" page built with React 19 + Vite, Tailwind CSS v4, shadc
 
 ## Commands
 
-- `npm run dev` — start the Vite dev server
-- `npm run build` — production build to `dist/`
-- `npm run preview` — serve the built `dist/`
-- `npm run lint` — oxlint
+- `npm run dev`: start the Vite dev server
+- `npm run build`: production build to `dist/`
+- `npm run preview`: serve the built `dist/`
+- `npm run lint`: oxlint
 
 ## Architecture
 
@@ -31,3 +31,7 @@ GitHub Pages at https://milan-sony.github.io/sociallinks/ via `.github/workflows
 ## Preloader
 
 The preloader is plain HTML/CSS inlined in `index.html` (`#preloader`) so it paints before the JS bundle loads, and it follows the saved theme. `src/main.jsx` waits for fonts and the avatar (shown at least `MIN_SHOW_MS`, at most `MAX_WAIT_MS`), then renders `App` and fades the preloader out. The name in the preloader is hardcoded in `index.html`; update it there if `profile.name` changes.
+
+## Link preview
+
+Open Graph and X card tags are in `index.html` and use absolute `https://milan-sony.github.io/sociallinks/...` URLs, because crawlers can't resolve relative paths. Update them if the site URL changes. The 1200x630 image `public/og-image.jpg` (JPEG, kept under 300 KB for WhatsApp) is a screenshot of `scripts/og/og-image.html`: with `npm run dev` running, open `/sociallinks/scripts/og/og-image.html` at 1200x630 and screenshot it to regenerate.

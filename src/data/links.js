@@ -61,6 +61,14 @@ export const links = [
     featured: true,
   },
   {
+    id: 'portfolio',
+    label: 'Portfolio',
+    handle: 'milansony.xyz',
+    url: 'https://milansony.xyz',
+    icon: 'portfolio',
+    category: 'dev',
+  },
+  {
     id: 'github',
     label: 'GitHub',
     handle: 'milan-sony',

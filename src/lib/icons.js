@@ -10,6 +10,7 @@ import {
   FaSnapchat,
   FaEnvelope,
   FaPhone,
+  FaGlobe,
 } from 'react-icons/fa6'
 import { SiBuymeacoffee } from 'react-icons/si'
 import { Link2 } from 'lucide-react'
@@ -28,6 +29,7 @@ export const icons = {
   coffee: { Icon: SiBuymeacoffee, color: '#FF813F' },
   email: { Icon: FaEnvelope, color: '#EA4335' },
   phone: { Icon: FaPhone, color: '#22C55E' },
+  portfolio: { Icon: FaGlobe, color: '#0EA5E9' },
 }
 
 export const getIcon = (key) => icons[key] ?? { Icon: Link2, color: 'currentColor' }

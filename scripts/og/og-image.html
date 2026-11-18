@@ -1,0 +1,92 @@
+<!doctype html>
+<!--
+  Source for public/og-image.png (the 1200x630 link preview image).
+  To regenerate: run `npm run dev`, open /sociallinks/scripts/og/og-image.html
+  at a 1200x630 viewport and screenshot it to public/og-image.png.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&family=Instrument+Serif&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; overflow: hidden; }
+      body {
+        position: relative;
+        background: oklch(0.165 0 0);
+        color: oklch(0.96 0 0);
+        font-family: 'Geist', sans-serif;
+        isolation: isolate;
+      }
+      .blob { position: absolute; border-radius: 9999px; filter: blur(70px); z-index: -1; }
+      .b1 { width: 760px; height: 760px; left: -260px; top: -420px;
+        background: radial-gradient(closest-side, oklch(0.96 0 0 / 0.20), transparent); }
+      .b2 { width: 680px; height: 680px; right: -200px; bottom: -380px;
+        background: radial-gradient(closest-side, oklch(0.96 0 0 / 0.14), transparent); }
+      .b3 { width: 420px; height: 420px; left: 420px; top: 260px;
+        background: radial-gradient(closest-side, oklch(0.96 0 0 / 0.07), transparent); }
+      .grain {
+        position: absolute; inset: 0; z-index: -1; opacity: 0.22; mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      .wrap {
+        position: absolute; inset: 0; padding: 72px 80px;
+        display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 64px;
+      }
+      .label {
+        display: inline-flex; align-items: center; gap: 12px;
+        font-family: 'Geist Mono', monospace; font-size: 18px; letter-spacing: 0.2em;
+        text-transform: uppercase; color: oklch(0.96 0 0 / 0.55);
+      }
+      .dot { width: 10px; height: 10px; border-radius: 99px; background: #10b981;
+        box-shadow: 0 0 0 6px rgb(16 185 129 / 0.18); }
+      h1 {
+        margin-top: 22px;
+        font-family: 'Instrument Serif', serif; font-weight: 400;
+        font-size: 132px; line-height: 0.95; letter-spacing: -0.015em;
+      }
+      .tagline { margin-top: 26px; font-size: 30px; line-height: 1.35; color: oklch(0.96 0 0 / 0.78); max-width: 600px; }
+      .links {
+        margin-top: 44px; display: flex; gap: 10px; flex-wrap: wrap;
+        font-family: 'Geist Mono', monospace; font-size: 18px; color: oklch(0.96 0 0 / 0.7);
+      }
+      .chip { padding: 9px 16px; border-radius: 999px; border: 1px solid oklch(1 0 0 / 0.12); background: oklch(1 0 0 / 0.04); }
+      .photo {
+        width: 330px; height: 330px; border-radius: 44px; object-fit: cover;
+        border: 6px solid oklch(0.165 0 0);
+        box-shadow: 0 0 0 1px oklch(1 0 0 / 0.12), 0 40px 80px -20px rgb(0 0 0 / 0.8);
+      }
+      .url {
+        position: absolute; left: 80px; bottom: 44px;
+        font-family: 'Geist Mono', monospace; font-size: 17px; color: oklch(0.96 0 0 / 0.45);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="grain"></div>
+
+    <main class="wrap">
+      <div>
+        <span class="label"><span class="dot"></span>Self-taught developer · India</span>
+        <h1>Milan Sony</h1>
+        <p class="tagline">All my links in one place.</p>
+        <div class="links">
+          <span class="chip">Portfolio</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">LinkedIn</span>
+          <span class="chip">Instagram</span>
+          <span class="chip">+ more</span>
+        </div>
+      </div>
+      <img class="photo" src="/profile.jpg" alt="" />
+    </main>
+
+    <span class="url">milan-sony.github.io/sociallinks</span>
+  </body>
+</html>

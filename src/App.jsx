@@ -21,6 +21,7 @@ import {
   CategoryTabs,
   item,
 } from "@/components/links";
+import { AvatarLightbox } from "@/components/avatar-lightbox";
 import { cn } from "@/lib/utils";
 
 const YEAR = new Date().getFullYear()
@@ -115,11 +116,9 @@ function Page({ filter, setFilter, counts, visible, featured }) {
             }}
             className="relative z-10 -mt-10 mb-4 sm:-mt-12"
           >
-            <img
+            <AvatarLightbox
               src={profile.avatar}
               alt={profile.name}
-              width="96"
-              height="96"
               className="size-20 rounded-2xl border-4 border-background object-cover shadow-md sm:size-24 xl:size-28"
             />
           </motion.div>
